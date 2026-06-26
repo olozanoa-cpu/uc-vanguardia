@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas UC Vanguardia - Edición Oficial e Institucional</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy-deep: #001e3d;
+            --navy-electric: #003366;
+            --teal-vibrant: #00a39b; /* Verde institucional Cuauhtémoc */
+            --teal-dark: #007a74;
+            --gold-bright: #ffd700;
+            --gold-luxury: #d4af37;
+            --bg-gradient: linear-gradient(135deg, #f4f7fa 0%, #e2e8f0 100%);
+            --white: #ffffff;
+            --shadow-premium: 0 20px 40px rgba(0, 30, 61, 0.08);
+            --shadow-hover: 0 30px 60px rgba(0, 163, 155, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            font-family: 'Outfit', sans-serif;
+            color: var(--navy-deep);
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /* HEADER INSTITUCIONAL CON LOGO — DISEÑO MODERNO */
+        header {
+            background: linear-gradient(145deg, var(--navy-deep) 0%, var(--navy-electric) 60%, #002a4d 100%);
+            color: var(--white);
+            padding: 55px 50px 50px;
+            border-radius: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 30, 61, 0.25);
+            margin-bottom: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            isolation: isolate;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 300px at 20% 80%, rgba(0, 163, 155, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 400px at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 163, 155, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header-dots {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        header .logo-container {
+            margin-bottom: 16px;
+        }
+
+        header .logo-container img {
+            max-height: 130px;
+            width: auto;
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.3));
+            transition: transform 0.4s ease;
+        }
+
+        header .logo-container img:hover {
+            transform: scale(1.03);
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--teal-vibrant);
+            margin-bottom: 8px;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 50px);
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--gold-bright) 0%, #fff4b0 50%, var(--gold-luxury) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .motto {
+            font-size: 16px;
+            font-weight: 300;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 14px;
+            line-height: 1.5;
+        }
+
+        .motto em {
+            font-style: italic;
+            color: var(--teal-vibrant);
+            opacity: 1;
+        }
+
+        /* SECCIONES DEL CANVAS — MODERNAS */
+        section {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 45px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 30, 61, 0.06);
+            border: 1px solid rgba(0, 51, 102, 0.04);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 30px; right: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal-vibrant), var(--gold-luxury), var(--teal-vibrant));
+            border-radius: 0 0 3px 3px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(0, 30, 61, 0.1);
+            border-color: rgba(0, 163, 155, 0.1);
+        }
+
+        section:hover::before {
+            opacity: 1;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 35px;
+            border-bottom: 2px solid rgba(0, 163, 155, 0.2);
+            padding-bottom: 20px;
+        }
+
+        .section-badge {
+            background: linear-gradient(135deg, var(--teal-vibrant) 0%, var(--teal-dark) 100%);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .section-badge::before {
+            content: '✦';
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--navy-deep);
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .section-subtitle {
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--teal-vibrant);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            background: rgba(0, 163, 155, 0.08);
+            padding: 4px 14px;
+            border-radius: 50px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy-deep);
+            letter-spacing: 0.2px;
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 15px 22px;
+            font-size: 15px;
+            color: var(--navy-deep);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            background: var(--white);
+            border-color: var(--teal-vibrant);
+            box-shadow: 0 0 0 4px rgba(0, 163, 155, 0.12);
+            outline: none;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #94a3b8;
+            font-weight: 300;
+        }
+
+        /* CHIPS DE ACTITUD VERDE INSTITUCIONAL */
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .chip-label {
+            cursor: pointer;
+        }
+
+        .chip-label input { display: none; }
+
+        .chip-ui {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            padding: 11px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--navy-electric);
+            display: inline-block;
+            transition: all 0.25s ease;
+        }
+
+        .chip-label:hover .chip-ui {
+            border-color: var(--teal-vibrant);
+            background: #f0fdfa;
+            transform: translateY(-1px);
+        }
+
+        .chip-label input:checked + .chip-ui {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-electric) 100%);
+            color: var(--white);
+            border-color: var(--navy-electric);
+            box-shadow: 0 8px 20px rgba(0, 30, 61, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* SEMÁFORO PERSONAL */
+        .semaphore-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .semaphore-card {
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 8px solid transparent;
+        }
+
+        .card-green { background: #f0fdf4; border-left-color: var(--teal-vibrant); border-top: 1px solid #bbf7d0; }
+        .card-yellow { background: #fffbeb; border-left-color: var(--gold-luxury); border-top: 1px solid #fef08a; }
+        .card-red { background: #fef2f2; border-left-color: #ef4444; border-top: 1px solid #fecaca; }
+
+        .semaphore-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .semaphore-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+
+        .semaphore-card label {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .semaphore-card label::before {
+            content: '';
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .card-green label::before { background: var(--teal-vibrant); }
+        .card-yellow label::before { background: var(--gold-luxury); }
+        .card-red label::before { background: #ef4444; }
+
+        /* LÍNEA DE TIEMPO / DESARROLLO */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .timeline-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 100%);
+            border: 2px solid rgba(0, 163, 155, 0.25);
+            padding: 25px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-box:hover {
+            border-color: var(--teal-vibrant);
+            box-shadow: 0 8px 20px rgba(0, 163, 155, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .timeline-box::before {
+            content: '';
+            position: absolute;
+            top: -12px; left: 20px;
+            background: linear-gradient(135deg, var(--gold-luxury) 0%, var(--gold-bright) 100%);
+            color: var(--navy-deep);
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 800;
+            box-shadow: 0 3px 8px rgba(212, 175, 55, 0.3);
+        }
+        .tb-1::before { content: '1'; }
+        .tb-2::before { content: '2'; }
+        .tb-3::before { content: '3'; }
+        .tb-4::before { content: '4'; }
+
+        /* BOTÓN DE IMPRESIÓN */
+        .action-area {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-electric) 100%);
+            color: var(--white);
+            padding: 18px 48px;
+            border: none;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(0, 30, 61, 0.18);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            border: 1.5px solid rgba(212, 175, 55, 0.4);
+            pointer-events: none;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(0, 163, 155, 0.2);
+            background: linear-gradient(135deg, #002a50 0%, var(--navy-electric) 100%);
+        }
+
+        .btn-premium:active {
+            transform: translateY(-1px);
+        }
+
+        .form-footer {
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            padding: 30px 0 10px;
+            letter-spacing: 1px;
+            font-weight: 400;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .form-footer .sep {
+            color: #cbd5e1;
+        }
+
+        /* TEXTO PLANO RESPUESTAS PDF */
+        .pdf-text-fallback {
+            display: none;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #000000;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .section-badge {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* CONTROL ESTRICTO DE EXPORTACIÓN A PDF (IMPRESIÓN) */
+        /* INSTRUCCIONES INICIALES */
+        .form-intro {
+            background: linear-gradient(135deg, rgba(0, 163, 155, 0.06) 0%, rgba(212, 175, 55, 0.06) 100%);
+            border: 1px solid rgba(0, 163, 155, 0.15);
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .form-intro-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--teal-vibrant), var(--teal-dark));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .form-intro-icon svg {
+            width: 20px; height: 20px;
+            color: white;
+        }
+
+        .form-intro p {
+            font-size: 15px;
+            color: var(--navy-deep);
+            margin: 0;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .form-intro strong {
+            color: var(--teal-vibrant);
+        }
+
+        .form-intro .hint {
+            font-size: 13px;
+            color: var(--navy-electric);
+            background: rgba(255,255,255,0.7);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media print {
+            @page {
+                margin: 1.5cm;
+            }
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            section {
+                display: block !important;
+                visibility: visible !important;
+                box-shadow: none !important;
+                transform: none !important;
+                padding: 25px 35px !important;
+                border-radius: 0 !important;
+                border: none !important;
+                border-bottom: 2px dashed #003366 !important;
+                page-break-inside: avoid !important;
+            }
+            section::before {
+                display: none !important;
+            }
+            .action-area, .chip-label input, input, textarea {
+                display: none !important;
+            }
+            .pdf-text-fallback {
+                display: block !important;
+            }
+            .chip-ui {
+                border: 1px solid #94a3b8 !important;
+                background: #f1f5f9 !important;
+                color: #475569 !important;
+                font-size: 12px !important;
+                padding: 6px 14px !important;
+                opacity: 0.5;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            /* ESTILO DESTACADO GANADOR PARA LOS CHIPS SELECCIONADOS EN EL PDF */
+            .chip-pdf-selected {
+                background: linear-gradient(135deg, #00a39b 0%, #007a74 100%) !important;
+                color: white !important;
+                font-weight: 800 !important;
+                border: 2px solid #005c57 !important;
+                box-shadow: 0 4px 10px rgba(0, 163, 155, 0.2) !important;
+                opacity: 1 !important;
+                transform: scale(1.05);
+            }
+            header {
+                border-radius: 0 !important;
+                border: 2px solid #d4af37 !important;
+                padding: 35px 35px !important;
+                background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-electric) 100%) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        /* RESPONSIVE / MÓVIL */
+        @media (max-width: 768px) {
+            body { padding: 20px 12px; }
+            
+            header {
+                padding: 35px 20px;
+                border-radius: 24px;
+            }
+            
+            header .logo-container img {
+                max-height: 100px;
+            }
+            
+            header h2 {
+                font-size: clamp(26px, 7vw, 34px);
+            }
+            
+            section {
+                padding: 25px 20px;
+                border-radius: 20px;
+                margin-bottom: 25px;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .section-header {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                width: 100%;
+            }
+            
+            .section-subtitle {
+                margin-left: 0;
+            }
+            
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-premium {
+                padding: 16px 30px;
+                font-size: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chips-container {
+                gap: 8px;
+            }
+            
+            .chip-ui {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+            
+            .semaphore-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo-container">
+            <img src="https://moodle.ucq.mx/pluginfile.php/1/theme_academi/logo/1655482756/UCQ_.png" alt="Logo Universidad Cuauhtémoc">
+        </div>
+        <h1>Universidad Cuauhtémoc</h1>
+        <h2>UC VANGUARDIA</h2>
+        <div class="header-dots"></div>
+        <p class="motto"><em>Lienzo de Alineación Humana</em> • Tu Esencia Suma, Tu Talento Inspira</p>
+    </header>
+
+    <form id="canvasCompletoForm">
+
+        <div class="form-intro">
+            <div class="form-intro-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <p>Completa cada sección con honestidad. <strong>No hay respuestas incorrectas</strong> — este lienzo es un espacio para conocerte mejor. Al final, podrás guardarlo como PDF.</p>
+            <span class="hint">✱ Todos los campos son opcionales</span>
+        </div>
+        
+        <section>
+            <div class="section-header">
+                <span class="section-badge">SECCIÓN 02</span>
+                <h3 class="section-title">Identidad y Trayectoria Única</h3>
+                <span class="section-subtitle">Datos Generales</span>
+            </div>
+            
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
+                    <div class="pdf-text-fallback" id="pdf-nombre"></div>
+                </div>
+                <div class="form-group">
+                    <label for="apodo">¿Cómo te gusta que te digan? (Apodo o preferencia)</label>
+                    <input type="text" id="apodo" placeholder="Ej: Dany, Alex, Profesor Chris">
+                    <div class="pdf-text-fallback" id="pdf-apodo"></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="puesto">Puesto o Rol Actual</label>
+                    <input type="text" id="puesto" placeholder="¿Cuál es tu rol aquí?">
+                    <div class="pdf-text-fallback" id="pdf-puesto"></div>
+                </div>
+                <div class="form-group">
+                    <label for="tiempo">Tiempo en la Organización</label>
+                    <input type="text" id="tiempo" placeholder="Ej: 1 año y 6 meses">
+                    <div class="pdf-text-fallback" id="pdf-tiempo"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="trayectoria">Trayectoria (Breve resumen de tu historial laboral y académico)</label>
+                <textarea id="trayectoria" placeholder="Cuéntanos los hitos y experiencias que te trajeron hasta aquí..."></textarea>
+                <div class="pdf-text-fallback" id="pdf-trayectoria"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-badge">SECCIÓN 03</span>
+                <h3 class="section-title">Perfil Humano y Perspectiva</h3>
+                <span class="section-subtitle">Tu Esencia</span>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="datos_generales">Acerca de Ti <span style="font-weight:400;text-transform:none;color:var(--teal-vibrant);">(Solo lo que quieras compartir)</span></label>
+                    <textarea id="datos_generales" placeholder="Pasatiempos, momentos que te han marcado, aquello que disfrutas hacer cuando nadie te ve..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-datos_generales"></div>
+                </div>
+                <div class="form-group">
+                    <label for="hobbies">Hobbies y Pasiones (¿Qué es lo que más te apasiona hacer en la vida/tiempo libre?)</label>
+                    <textarea id="hobbies" placeholder="Lo que recarga tu energía fuera de la oficina..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-hobbies"></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="lugar_desconexion">Lugar Favorito para Desconectarte</label>
+                    <input type="text" id="lugar_desconexion" placeholder="Ej: Una playa tranquila, un libro café, la montaña">
+                    <div class="pdf-text-fallback" id="pdf-lugar_desconexion"></div>
+                </div>
+                <div class="form-group">
+                    <label for="anhelos">¿Qué sueñas a futuro?</label>
+                    <input type="text" id="anhelos" placeholder="Esa meta grande que te motiva en las mañanas...">
+                    <div class="pdf-text-fallback" id="pdf-anhelos"></div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 10px;">
+                <div class="form-group">
+                    <label for="mantra">Tu frase favorita o mantra</label>
+                    <input type="text" id="mantra" placeholder="Esa frase que siempre llevas contigo...">
+                    <div class="pdf-text-fallback" id="pdf-mantra"></div>
+                </div>
+                <div class="form-group">
+                    <label for="superpoder">Si tuvieras un superpoder sería...</label>
+                    <input type="text" id="superpoder" placeholder="Ej: Organización ultrasónica, empatía total">
+                    <div class="pdf-text-fallback" id="pdf-superpoder"></div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label>Actitud Predominante y Rasgos Únicos (Elige los que te describan)</label>
+                <div class="chips-container">
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Analítica"><span class="chip-ui">Analítica</span></label>
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Creativa"><span class="chip-ui">Creativa</span></label>
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Colaborativa"><span class="chip-ui">Colaborativa</span></label>
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Proactiva"><span class="chip-ui">Proactiva</span></label>
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Estructurada"><span class="chip-ui">Estructurada</span></label>
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Optimista"><span class="chip-ui">Optimista</span></label>
+                    <label class="chip-label"><input type="checkbox" name="actitud_pred" value="Reservada/Reflexiva"><span class="chip-ui">Reservada/Reflexiva</span></label>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label for="caracteristicas_part">Características Particulares (Rasgos únicos de tu forma de ser o trabajar)</label>
+                    <input type="text" id="caracteristicas_part" placeholder="Esa cualidad que solo tú aportas al equipo...">
+                <div class="pdf-text-fallback" id="pdf-caracteristicas_part"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Semáforo Personal de Rendimiento</label>
+                <div class="semaphore-stack">
+                    <div class="semaphore-card card-green">
+                        <label for="energiza">Me Energiza</label>
+                        <input type="text" id="energiza" placeholder="Actividades que te dan vitalidad">
+                        <div class="pdf-text-fallback" id="pdf-energiza"></div>
+                    </div>
+                    <div class="semaphore-card card-yellow">
+                        <label for="reta">Me Reta</label>
+                        <input type="text" id="reta" placeholder="Retos profesionales que te impulsan a crecer">
+                        <div class="pdf-text-fallback" id="pdf-reta"></div>
+                    </div>
+                    <div class="semaphore-card card-red">
+                        <label for="desgasta">Me Desgasta</label>
+                        <input type="text" id="desgasta" placeholder="Situaciones que te quitan la energía o te frustran...">
+                        <div class="pdf-text-fallback" id="pdf-desgasta"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-badge">SECCIÓN 04</span>
+                <h3 class="section-title">El Puesto y Desempeño Actual</h3>
+                <span class="section-subtitle">Zonas de Excelencia</span>
+            </div>
+
+            <div class="form-group">
+                    <label for="desc_puesto">¿Qué haces realmente?</label>
+                    <textarea id="desc_puesto" placeholder="¿Cómo le explicarías a un amigo eso que haces todos los días?"></textarea>
+                <div class="pdf-text-fallback" id="pdf-desc_puesto"></div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="resp_principales">Responsabilidades Principales / Clave</label>
+                    <textarea id="resp_principales" placeholder="Aquello que nadie más hace y está bajo tu cuidado..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-resp_principales"></div>
+                </div>
+                <div class="form-group">
+                    <label for="tareas_diarias">Tareas del Día a Día</label>
+                    <textarea id="tareas_diarias" placeholder="Tu día a día, esas tareas que ya dominas..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-tareas_diarias"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aportaciones_valor">¿Cuál es tu mayor aporte?</label>
+                <textarea id="aportaciones_valor" placeholder="¿De qué manera facilitas de forma única el éxito de tu equipo?"></textarea>
+                <div class="pdf-text-fallback" id="pdf-aportaciones_valor"></div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="fortalezas">Tus fortalezas (¿En qué eres increíble?)</label>
+                    <textarea id="fortalezas" placeholder="Tus habilidades técnicas o humanas más fuertes..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-fortalezas"></div>
+                </div>
+                <div class="form-group">
+                    <label for="oportunidades">Áreas de mejora (¿Qué te gustaría pulir?)</label>
+                    <textarea id="oportunidades" placeholder="Aspectos técnicos o blandos que buscas pulir..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-oportunidades"></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="mejores_resultados">¿Dónde brillas más?</label>
+                    <textarea id="mejores_resultados" placeholder="Describe las condiciones o proyectos donde mejor te desenvuelves..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-mejores_resultados"></div>
+                </div>
+                <div class="form-group">
+                    <label for="encanta_encargarme">¿Qué te encanta hacer?</label>
+                    <textarea id="encanta_encargarme" placeholder="Esas tareas específicas que tomas con total iniciativa y gusto..."></textarea>
+                    <div class="pdf-text-fallback" id="pdf-encanta_encargarme"></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-badge">SECCIÓN 05</span>
+                <h3 class="section-title">Desarrollo y Objetivos de Futuro</h3>
+                <span class="section-subtitle">Plan de Vuelo</span>
+            </div>
+
+            <div class="timeline-grid">
+                <div class="timeline-box tb-1">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="capacitacion">1. Próxima Capacitación</label>
+                        <textarea id="capacitacion" style="height:100px; margin-top:8px;" placeholder="Cursos, talleres o habilidades por tomar pronto..."></textarea>
+                        <div class="pdf-text-fallback" id="pdf-capacitacion"></div>
+                    </div>
+                </div>
+                <div class="timeline-box tb-2">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="metas_ind">2. Objetivos Individuales</label>
+                        <textarea id="metas_ind" style="height:100px; margin-top:8px;" placeholder="Tus metas directas para este periodo..."></textarea>
+                        <div class="pdf-text-fallback" id="pdf-metas_ind"></div>
+                    </div>
+                </div>
+                <div class="timeline-box tb-3">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="objetivos_equipo">3. Objetivos de Equipo</label>
+                        <textarea id="objetivos_equipo" style="height:100px; margin-top:8px;" placeholder="¿Cómo aportas a la gran meta grupal?..."></textarea>
+                        <div class="pdf-text-fallback" id="pdf-objetivos_equipo"></div>
+                    </div>
+                </div>
+                <div class="timeline-box tb-4">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="vision">4. Visión a 3 Años</label>
+                        <textarea id="vision" style="height:100px; margin-top:8px;" placeholder="¿Dónde y cómo te visualizas en la institución?..."></textarea>
+                        <div class="pdf-text-fallback" id="pdf-vision"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="border-bottom: none;">
+            <div class="section-header">
+                <span class="section-badge">SECCIÓN 06</span>
+                <h3 class="section-title">Espacio Abierto, Compromisos y Firma</h3>
+                <span class="section-subtitle">Acuerdos de Cierre</span>
+            </div>
+
+            <div class="form-group">
+                <label for="sugerencias">¿Algo más que quieras decir?</label>
+                <textarea id="sugerencias" placeholder="Esa idea que guardas y nunca te han preguntado..."></textarea>
+                <div class="pdf-text-fallback" id="pdf-sugerencias"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="expectativas_mutuas">Acuerdos y compromisos</label>
+                <textarea id="expectativas_mutuas" placeholder="Los compromisos que nacieron de esta conversación..."></textarea>
+                <div class="pdf-text-fallback" id="pdf-expectativas_mutuas"></div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 35px;">
+                <div class="form-group">
+                    <label for="firma">Firma Digital del Colaborador</label>
+                    <input type="text" id="firma" style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;" placeholder="Escribe tu nombre completo para firmar">
+                    <div class="pdf-text-fallback" id="pdf-firma"></div>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha de Llenado</label>
+                    <input type="date" id="fecha">
+                    <div class="pdf-text-fallback" id="pdf-fecha"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="action-area">
+            <button type="button" class="btn-premium" onclick="ejecutarImpresionLimpia()">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Guardar como PDF Institucional
+            </button>
+        </div>
+    </form>
+
+    <footer class="form-footer">
+        <span>Universidad Cuauhtémoc</span>
+        <span class="sep">—</span>
+        <span>Vanguardia y Excelencia</span>
+    </footer>
+</div>
+
+<script>
+    function ejecutarImpresionLimpia() {
+        // 1. Clonación exacta de inputs y textareas a texto plano para el PDF
+        const selectores = '#canvasCompletoForm input[type="text"], #canvasCompletoForm input[type="date"], #canvasCompletoForm textarea';
+        const componentesInput = document.querySelectorAll(selectores);
+        
+        componentesInput.forEach(elemento => {
+            const contenedorPdf = document.getElementById('pdf-' + elemento.id);
+            if (contenedorPdf) {
+                contenedorPdf.innerText = elemento.value.trim() !== "" ? elemento.value : "(Campo vacío)";
+            }
+        });
+
+        // 2. Mapeo y marcado especial de los Chips seleccionados
+        const casillasVerificacion = document.querySelectorAll('input[name="actitud_pred"]');
+        casillasVerificacion.forEach(casilla => {
+            const interfazLabel = casilla.closest('.chip-label');
+            const interfazVisual = interfazLabel.querySelector('.chip-ui');
+            
+            if (casilla.checked) {
+                interfazVisual.classList.add('chip-pdf-selected');
+            } else {
+                interfazVisual.classList.remove('chip-pdf-selected');
+            }
+        });
+
+        // 3. Lanzar la ventana de exportación nativa
+        window.print();
+    }
+</script>
+
+</body>
+</html>
